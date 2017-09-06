@@ -34,12 +34,23 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-        var s = window.clipboardData.getData('Text');
-        document.getElementById("h").innerHTML = "cb " + s;
+        
+        var text = "Hello World!";
+
+window.plugins.copy(text);
+
+window.plugins.paste(function (text) { alert(text); });
         
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        
+        var parentElement = document.getElementById(id);
+        var listeningElement = parentElement.querySelector('.listening');
+        var receivedElement = parentElement.querySelector('.received');
+
+        listeningElement.setAttribute('style', 'display:none;');
+        receivedElement.setAttribute('style', 'display:block;');
+
+        console.log('Received Event: ' + id);
     }
 };
