@@ -34,13 +34,7 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-        
-        var text = "Hello World!";
-
-window.plugins.copy(text);
-
-window.plugins.paste(function (text) { alert(text); });
-        
+        alert(window.clipboardData.getData('Text'));
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
